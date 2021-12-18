@@ -1,5 +1,5 @@
-import forecast from './allApi/forecast.js'
+import forecast from './allApi/forecast.js';
 
-export default{
-  forecast
-}
+export default {
+  forecast,
+};
