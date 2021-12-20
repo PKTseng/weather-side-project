@@ -37,11 +37,11 @@ export default {
     };
   },
   methods: {
-    getForecastList() {
+    getWeatherList() {
       let query = {
         Authorization: "CWB-7B9E0D1E-8FED-45AF-B79A-AFB4BBEE5704",
       };
-      this.$api.forecast.getList(query).then((res) => {
+      this.$api.forecast.getWeather(query).then((res) => {
         const { records, success } = res.data;
         if (success === "true") {
           this.datasetDescription = records.datasetDescription;
@@ -59,14 +59,14 @@ export default {
         (i) => i.locationName == this.city
       );
 
-      this.cityWeatherInfo = locationInfo[0].weatherElement[0].time;
+      this.cityWeatherInfo = locationInfo[0]?.weatherElement[0]?.time;
 
-      console.log(JSON.parse(JSON.stringify(this.cityWeatherInfo)));
+      // console.log(JSON.parse(JSON.stringify(this.cityWeatherInfo)));
     },
   },
 
   mounted() {
-    this.getForecastList();
+    this.getWeatherList();
 
     // forecast.getList(query).then((res)=>{
     //   console.log(res);

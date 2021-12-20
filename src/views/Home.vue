@@ -16,6 +16,14 @@ export default {
     HelloWorld,
   },
   methods: {
+    getWeatherList() {
+      let query = {
+        Authorization: "CWB-7B9E0D1E-8FED-45AF-B79A-AFB4BBEE5704",
+      };
+      this.$api.forecast.getWeather(query).then((res) => {
+        console.log(res);
+      });
+    },
     nextPage() {
       this.$router.push({ name: "Observe" });
       // console.log('nextPage');
@@ -26,13 +34,7 @@ export default {
     // 先找天氣就好
   },
   mounted() {
-    let query = {
-      Authorization: "CWB-7B9E0D1E-8FED-45AF-B79A-AFB4BBEE5704",
-    };
-    this.$api.forecast.getList(query).then((res) => {
-      console.log(res);
-    });
-
+    // this.getWeatherList()
     // let query = {
     //   Authorization: "CWB-7B9E0D1E-8FED-45AF-B79A-AFB4BBEE5704"
     // }
