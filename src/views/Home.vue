@@ -8,49 +8,37 @@
 
 <script>
 // import axios from 'axios';
-import HelloWorld from '@/components/HelloWorld.vue';
-
-// import * as forecast from '../api/allApi/forecast';
-// 引入forecast所有的檔案用forecast代替
+import HelloWorld from "@/components/HelloWorld.vue";
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
     HelloWorld,
   },
   methods: {
-    nextPage(){
-      this.$router.push({name:'Observe'})
+    nextPage() {
+      this.$router.push({ name: "Observe" });
       // console.log('nextPage');
-    }
-    
-// 下拉選單，選縣市，選擇時間區間顯示對應內容，
-// 先選
-// 先找天氣就好
-// export default function getList(params) {
-//   return request({
-//     url: '/v1/rest/datastore/F-C0032-001',
-//     method: 'get',
-//     params,
-//   });
-// }
-    
+    },
 
+    // 下拉選單，選縣市，選擇時間區間顯示對應內容，
+    // 先選
+    // 先找天氣就好
   },
-  mounted(){
-      let query = {
-        Authorization: "CWB-7B9E0D1E-8FED-45AF-B79A-AFB4BBEE5704"
-      }
-     this.$api.forecast.getList(query).then((res) => {
-        console.log(res);
-      });
+  mounted() {
+    let query = {
+      Authorization: "CWB-7B9E0D1E-8FED-45AF-B79A-AFB4BBEE5704",
+    };
+    this.$api.forecast.getList(query).then((res) => {
+      console.log(res);
+    });
 
-      // let query = {
-      //   Authorization: "CWB-7B9E0D1E-8FED-45AF-B79A-AFB4BBEE5704"
-      // }
-      // axios.get(`https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-7B9E0D1E-8FED-45AF-B79A-AFB4BBEE5704`).then((res) => {
-      //   console.log(res);
-      // })
-  }
+    // let query = {
+    //   Authorization: "CWB-7B9E0D1E-8FED-45AF-B79A-AFB4BBEE5704"
+    // }
+    // axios.get(`https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-7B9E0D1E-8FED-45AF-B79A-AFB4BBEE5704`).then((res) => {
+    //   console.log(res);
+    // })
+  },
 };
 </script>

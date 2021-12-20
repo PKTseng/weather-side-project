@@ -7,5 +7,12 @@ module.exports = {
       },
     open: true,
    },
+   css: {
+    loaderOptions: {
+      sass: {
+        additionalData: `@import "@/assets/common.scss";`
+      }
+    }
+  },
   filenameHashing: false,
 };
