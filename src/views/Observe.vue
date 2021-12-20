@@ -4,7 +4,7 @@
 
     <div class="Observe__container">
       <select @change="selectWeather" v-model="city">
-        <option :disabled='true'>請選擇縣市</option>
+        <option :disabled='true' value="">請選擇縣市</option>
         <option v-for="(item,index) in locationNameList" :key='index'>{{item.locationName}}</option>
       </select>
 
@@ -90,6 +90,7 @@ export default {
       text-align: center;
       font-size: 24px;
       border-radius: 50px;
+      padding: 8px 16px;
     }
 
     &--weatherTitle {
