@@ -2,19 +2,14 @@ import axios from 'axios';
 import { Promise } from 'core-js';
 
 const service = axios.create({
+  // 打 api 的網址前啜，因為正式開發上有分開發環境跟正式環境，所以不能寫死
   baseURL: process.env.VUE_APP_BASE_API,
   timeout: 5000,
-  headers: {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-    "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token"
-  },
-  withCredentials: true
 });
 
 service.interceptors.request.use(
   (config) =>{
-    config.headers.Authorization = 'CWB-7B9E0D1E-8FED-45AF-B79A-AFB4BBEE5704'
+    // config.headers.Authorization = 'CWB-7B9E0D1E-8FED-45AF-B79A-AFB4BBEE5704'
 
    return config;
   },

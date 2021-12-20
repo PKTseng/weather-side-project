@@ -1,17 +1,17 @@
 <template>
   <div class="home">
-    <button @click="getData">getData</button>
-    <button @click="getAxiosData">getAxiosData</button>
-    <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
+    <button @click="nextPage">nextPage</button>
 
     <HelloWorld msg="Welcome to Your Vue.js App" />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
+// import axios from 'axios';
 import HelloWorld from '@/components/HelloWorld.vue';
-import * as forecast from '../api/allApi/forecast';
+
+// import * as forecast from '../api/allApi/forecast';
+// 引入forecast所有的檔案用forecast代替
 
 export default {
   name: 'Home',
@@ -19,25 +19,38 @@ export default {
     HelloWorld,
   },
   methods: {
-    getData() {
-      console.log('getData', this.$api);
-      this.$api.get('https://randomuser.me/api/', { params: {}, headers: {} }).then((res) => {
-        console.log(res);
-      });
-    },
-    getAxiosData() {
-      console.log('getAxiosData', forecast);
-      forecast.getList().then((res) => {
-        console.log(res);
-      });
-    },
+    nextPage(){
+      this.$router.push({name:'Observe'})
+      // console.log('nextPage');
+    }
+    
+// 下拉選單，選縣市，選擇時間區間顯示對應內容，
+// 先選
+// 先找天氣就好
+// export default function getList(params) {
+//   return request({
+//     url: '/v1/rest/datastore/F-C0032-001',
+//     method: 'get',
+//     params,
+//   });
+// }
+    
 
   },
   mounted(){
-    // console.log(process.env.VUE_APP_BASE_API);
-     forecast.getList().then((res) => {
+      let query = {
+        Authorization: "CWB-7B9E0D1E-8FED-45AF-B79A-AFB4BBEE5704"
+      }
+     this.$api.forecast.getList(query).then((res) => {
         console.log(res);
       });
+
+      // let query = {
+      //   Authorization: "CWB-7B9E0D1E-8FED-45AF-B79A-AFB4BBEE5704"
+      // }
+      // axios.get(`https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-7B9E0D1E-8FED-45AF-B79A-AFB4BBEE5704`).then((res) => {
+      //   console.log(res);
+      // })
   }
 };
 </script>
