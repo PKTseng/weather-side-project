@@ -34,7 +34,7 @@ export default {
     // 先找天氣就好
   },
   mounted() {
-    // this.getWeatherList()
+    this.getWeatherList();
     // let query = {
     //   Authorization: "CWB-7B9E0D1E-8FED-45AF-B79A-AFB4BBEE5704"
     // }
