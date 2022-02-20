@@ -1,23 +1,22 @@
 <template>
   <div class="Observe">
-    <h1>{{datasetDescription}}</h1>
+    <h1>{{ datasetDescription }}</h1>
 
     <div class="Observe__container">
       <select @change="selectWeather" v-model="city">
-        <option :disabled='true' value="">請選擇縣市</option>
-        <option v-for="(item,index) in locationNameList" :key='index'>{{item.locationName}}</option>
+        <option :disabled="true" value="">請選擇縣市</option>
+        <option v-for="(item, index) in locationNameList" :key="index">{{ item.locationName }}</option>
       </select>
 
       <div class="Observe__container--weatherTitle">該縣市天氣</div>
-      <div v-for="(item,index) in cityWeatherInfo" :key='index' class="cityWeatherInfo">
-        <div>開始時間：{{item.startTime}}</div>
-        <div>結束時間：{{item.endTime}}</div>
-        <div class="weatherStatus">天氣狀況：{{item.parameter.parameterName}}</div>
+      <div v-for="(item, index) in cityWeatherInfo" :key="index" class="cityWeatherInfo">
+        <div>開始時間：{{ item.startTime }}</div>
+        <div>結束時間：{{ item.endTime }}</div>
+        <div class="weatherStatus">天氣狀況：{{ item.parameter.parameterName }}</div>
       </div>
     </div>
 
-    <button @click='$router.push({name:"Home"})'>Home</button>
-
+    <button @click="$router.push({ name: 'Home' })">Home</button>
   </div>
 </template>
 
@@ -55,9 +54,7 @@ export default {
     },
 
     selectWeather() {
-      let locationInfo = this.locationList.filter(
-        (i) => i.locationName == this.city
-      );
+      let locationInfo = this.locationList.filter((i) => i.locationName == this.city);
 
       this.cityWeatherInfo = locationInfo[0]?.weatherElement[0]?.time;
 
@@ -67,10 +64,6 @@ export default {
 
   mounted() {
     this.getWeatherList();
-
-    // forecast.getList(query).then((res)=>{
-    //   console.log(res);
-    // })
   },
 };
 </script>
