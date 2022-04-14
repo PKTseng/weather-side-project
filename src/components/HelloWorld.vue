@@ -47,7 +47,7 @@ export default {
         Authorization: 'CWB-7B9E0D1E-8FED-45AF-B79A-AFB4BBEE5704',
       };
       this.$api.forecast.getWeather(query).then((res) => {
-        const { records, success } = res.data;
+        const { records, success } = res;
         if (success === 'true') {
           this.datasetDescription = records.datasetDescription;
           this.locationList = records.location;
