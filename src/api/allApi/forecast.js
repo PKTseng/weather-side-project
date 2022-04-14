@@ -1,7 +1,7 @@
 import request from '../requires';
 
-const api  = {
-  //一般天氣預報
+const api = {
+  // 一般天氣預報
   getWeather(params) {
     return request({
       url: '/F-C0032-001',
@@ -9,6 +9,6 @@ const api  = {
       params,
     });
   },
-}
+};
 
-export default api
+export default api;

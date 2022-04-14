@@ -1,4 +1,4 @@
-import forecast  from '../api/allApi/forecast';
+import forecast from './allApi/forecast';
 
 export default {
   forecast,

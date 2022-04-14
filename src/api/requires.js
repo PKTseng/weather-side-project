@@ -4,23 +4,19 @@ import { Promise } from 'core-js';
 const service = axios.create({
   // 打 api 的網址前啜，因為正式開發上有分開發環境跟正式環境，所以不能寫死
   baseURL: process.env.VUE_APP_BASE_API,
+  withCredentials: true,
   timeout: 5000,
 });
 
 service.interceptors.request.use(
-  (config) =>{
-    return config;
-  },
-
-  (error) =>{return Promise.reject(error)} 
+  (config) => config,
+  (error) => Promise.reject(error),
 );
 
 service.interceptors.response.use(
-  (response) =>
-    response,
+  (response) => response,
   (error) => {
-    if (error.response) {
-      switch (error.response.status) {
+    switch (error.response.status) {
       case 404:
         console.log('你要找的頁面不存在');
         // go to 404 page
@@ -31,12 +27,8 @@ service.interceptors.response.use(
         break;
       default:
         console.log(error.message);
-      }
     }
-    if (!window.navigator.onLine) {
-      alert('網路出了點問題，請重新連線後重整網頁');
-      return;
-    }
+
     return Promise.reject(error);
   },
 );

@@ -13,7 +13,7 @@ const routes = [
   {
     path: '/Observe',
     name: 'Observe',
-    component: () => import( '../views/Observe.vue'),
+    component: () => import('../views/Observe.vue'),
     meta: {
       title: 'Observe',
     },
