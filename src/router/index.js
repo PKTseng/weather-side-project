@@ -4,6 +4,8 @@ import Home from '../views/Home.vue';
 
 Vue.use(VueRouter);
 
+const Observe = () => import('../views/Observe.vue');
+
 const routes = [
   {
     path: '/',
@@ -13,7 +15,7 @@ const routes = [
   {
     path: '/Observe',
     name: 'Observe',
-    component: () => import('../views/Observe.vue'),
+    component: Observe,
     meta: {
       title: 'Observe',
     },
