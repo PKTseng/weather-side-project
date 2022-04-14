@@ -1,5 +1,5 @@
 <template>
-  <div class="Observe">
+  <div class="w-full Observe">
     <h1>{{ datasetDescription }}</h1>
 
     <div class="Observe__container">
