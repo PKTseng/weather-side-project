@@ -1,11 +1,9 @@
 import axios from 'axios';
-import { Promise } from 'core-js';
 
 const service = axios.create({
-  // 打 api 的網址前啜，因為正式開發上有分開發環境跟正式環境，所以不能寫死
   baseURL: process.env.VUE_APP_BASE_API,
   withCredentials: true,
-  timeout: 5000,
+  timeout: 50000,
 });
 
 service.interceptors.request.use(
@@ -14,9 +12,26 @@ service.interceptors.request.use(
 );
 
 service.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    if (response.data.success) {
+      return response.data;
+    }
+
+    return Promise.reject(response);
+  },
   (error) => {
-    switch (error.response.status) {
+    console.log(error);
+    switch (error.response) {
+      case 400:
+        console.log(error);
+        break;
+      case 401:
+        // tokenExpire();
+        console.log(error);
+        break;
+      case 403:
+        console.log(error);
+        break;
       case 404:
         console.log('你要找的頁面不存在');
         // go to 404 page
