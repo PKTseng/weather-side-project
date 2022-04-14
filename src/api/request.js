@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
-  withCredentials: true,
+  // withCredentials: true,
   timeout: 50000,
 });
 
@@ -16,9 +16,9 @@ service.interceptors.response.use(
     if (response.data.success) {
       return response.data;
     }
-
     return Promise.reject(response);
   },
+  // 這裡是http status
   (error) => {
     console.log(error);
     switch (error.response) {
